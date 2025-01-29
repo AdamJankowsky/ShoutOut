@@ -2,20 +2,21 @@
 @inherits LayoutComponentBase
 
 @* Required *@
-<MudThemeProvider />
-<MudPopoverProvider />
+<MudThemeProvider/>
+<MudPopoverProvider/>
 
 @* Needed for dialogs *@
-<MudDialogProvider />
-
+<MudDialogProvider/>
 @* Needed for snackbars *@
-<MudSnackbarProvider />
+<MudSnackbarProvider/>
 
 
 <div class="page">
-    <MudLayout>
-        <MudAppBar Color="Color.Dark">
+    <MudLayout Class="d-flex">
+        <MudAppBar Color="Color.Dark" Class="d-flex align-content-space-between flex-grow-1 ">
             <ShoutOutLogo/>
+            <Login/>
+            <RegisterAccount/>
         </MudAppBar>
 
         <MudMainContent>
