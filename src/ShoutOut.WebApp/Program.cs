@@ -1,5 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
+using ShoutOut.Database;
 using ShoutOut.WebApp.Components;
+using ShoutOut.WebApp.Cryptography;
+using ShoutOut.WebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMudServices();
@@ -7,6 +11,13 @@ builder.Services.AddMudServices();
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddDbContext<ShoutOutDbContext>(opt =>
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("MainDb")));
+
+builder.Services.AddTransient<IHashingService, HashingService>();
+builder.Services.AddTransient<ITokenService, TokenService>();
+builder.Services.AddTransient<RegistrationService>();
 
 var app = builder.Build();
 

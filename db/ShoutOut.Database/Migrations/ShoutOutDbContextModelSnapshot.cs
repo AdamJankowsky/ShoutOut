@@ -50,8 +50,8 @@ namespace ShoutOut.Database.Migrations
 
                     b.Property<string>("Salt")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
 
                     b.HasKey("Id");
 

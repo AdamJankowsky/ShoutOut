@@ -12,8 +12,8 @@ using ShoutOut.Database;
 namespace ShoutOut.Database.Migrations
 {
     [DbContext(typeof(ShoutOutDbContext))]
-    [Migration("20250122141453_InitUsers")]
-    partial class InitUsers
+    [Migration("20250201145650_InitMigration")]
+    partial class InitMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,8 +53,8 @@ namespace ShoutOut.Database.Migrations
 
                     b.Property<string>("Salt")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
 
                     b.HasKey("Id");
 

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ShoutOut.Database.Migrations
 {
     /// <inheritdoc />
-    public partial class InitUsers : Migration
+    public partial class InitMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +20,7 @@ namespace ShoutOut.Database.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Email = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
                     Password = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    Salt = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    Salt = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
                     NickName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     AvatarId = table.Column<Guid>(type: "uuid", nullable: false)
                 },

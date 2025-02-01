@@ -1,0 +1,38 @@
+﻿@page "/login"
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>ShoutOut - Login to your account</PageTitle>
+
+<MudGrid Class="mt-3" Justify="Justify.Center">
+    <MudItem xs="12" sm="7">
+        <MudPaper Class="pa-4">
+            <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
+                <MudTextField T="string" Label="Email" Required="true" RequiredError="Email is required!"
+                              Validation="@(new EmailAddressAttribute { ErrorMessage = "The email address is invalid" })"/>
+                <MudTextField T="string" Label="Password" @ref="password"
+                              InputType="InputType.Password"
+                              Required="true"
+                              RequiredError="Password is required!"/>
+
+                <div class="d-flex">
+                </div>
+                <div class="d-flex align-center justify-space-between">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!success)"
+                               Class="ml-auto">
+                        Login
+                    </MudButton>
+                </div>
+            </MudForm>
+        </MudPaper>
+
+    </MudItem>
+
+</MudGrid>
+
+@code {
+    bool success;
+    string[] errors = { };
+    MudTextField<string> password;
+    MudForm form;
+
+}

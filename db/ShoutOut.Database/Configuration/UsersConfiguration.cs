@@ -10,10 +10,10 @@ public class UsersConfiguration : IEntityTypeConfiguration<User>
     {
         builder.ToTable("users");
         builder.Property(x => x.Email).HasMaxLength(150);
-        
+
         builder.Property(x => x.Password).HasMaxLength(200);
-        builder.Property(x => x.Salt).HasMaxLength(10);
-        
+        builder.Property(x => x.Salt).HasMaxLength(30);
+
         builder.Property(x => x.NickName).HasMaxLength(50);
     }
 }

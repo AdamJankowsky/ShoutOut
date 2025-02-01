@@ -13,10 +13,14 @@
 
 <div class="page">
     <MudLayout Class="d-flex">
-        <MudAppBar Color="Color.Dark" Class="d-flex align-content-space-between flex-grow-1 ">
-            <ShoutOutLogo/>
-            <Login/>
-            <RegisterAccount/>
+        <MudAppBar Color="Color.Dark" Class="d-flex justify-content-between">
+            <div class="d-flex me-auto">
+                <ShoutOutLogo/>
+            </div>
+            <div class="d-flex ms-auto">
+                <Login/>
+                <RegisterAccountButton/>
+            </div>
         </MudAppBar>
 
         <MudMainContent>
