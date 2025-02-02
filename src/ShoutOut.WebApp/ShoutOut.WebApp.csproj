@@ -7,9 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.3.1" />
+        <PackageReference Include="FluentResults" Version="3.16.0"/>
+        <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.1"/>
+        <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.3.1"/>
         <PackageReference Include="MudBlazor" Version="8.0.0"/>
-        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.1" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.1"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -17,9 +19,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Update="appsettings.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+        <Content Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

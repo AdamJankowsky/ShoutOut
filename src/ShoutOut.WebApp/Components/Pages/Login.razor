@@ -1,23 +1,37 @@
 ﻿@page "/login"
-@using System.ComponentModel.DataAnnotations
+@using ShoutOut.WebApp.Models
+
+@inject LoginService LoginService;
+@inject NavigationManager NavigationManager;
 
 <PageTitle>ShoutOut - Login to your account</PageTitle>
 
 <MudGrid Class="mt-3" Justify="Justify.Center">
     <MudItem xs="12" sm="7">
         <MudPaper Class="pa-4">
-            <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
-                <MudTextField T="string" Label="Email" Required="true" RequiredError="Email is required!"
-                              Validation="@(new EmailAddressAttribute { ErrorMessage = "The email address is invalid" })"/>
-                <MudTextField T="string" Label="Password" @ref="password"
+            <MudForm @ref="form"
+                     Model="model"
+                     @onkeydown="HandleKeyDown"
+                     ValidationDelay="0" @bind-IsValid="@success"
+                     @bind-Errors="@errors">
+                <MudTextField T="string"
+                              Label="Email"
+                              Required="true"
+                              RequiredError="Email is required!"
+                              @bind-Value="model.Email"
+                />
+                <MudTextField T="string" Label="Password"
                               InputType="InputType.Password"
+                              @bind-Value="model.Password"
                               Required="true"
                               RequiredError="Password is required!"/>
 
                 <div class="d-flex">
                 </div>
                 <div class="d-flex align-center justify-space-between">
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!success)"
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               OnClick="@(async () => await LogInto())"
                                Class="ml-auto">
                         Login
                     </MudButton>
@@ -32,7 +46,25 @@
 @code {
     bool success;
     string[] errors = { };
-    MudTextField<string> password;
     MudForm form;
+
+    readonly LoginModel model = new() { Email = "", Password = "" };
+
+    public async Task LogInto()
+    {
+        var result = await LoginService.LoginAsync(model.Email, model.Password);
+        if (result.IsSuccess)
+            NavigationManager.NavigateTo("/");
+        else
+            errors = result.Errors.Select(x => x.Message).ToArray();
+    }
+
+    public async Task HandleKeyDown(KeyboardEventArgs arg)
+    {
+        if (arg.Key == "Enter")
+        {
+            await LogInto();
+        }
+    }
 
 }

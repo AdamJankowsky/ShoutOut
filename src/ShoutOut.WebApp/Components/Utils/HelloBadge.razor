@@ -1,0 +1,13 @@
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Components.Authorization
+<AuthorizeView>
+    <Authorized>
+        <MudText Align="Align.Inherit" Class="align-self-center">
+            Hello @context.User.Claims.First(x => x.Type == ClaimTypes.Email).Value
+        </MudText>
+    </Authorized>
+</AuthorizeView>
+
+@code {
+
+}

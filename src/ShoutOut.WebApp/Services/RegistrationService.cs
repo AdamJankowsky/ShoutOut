@@ -1,11 +1,15 @@
 using ShoutOut.Database;
 using ShoutOut.Database.Entities;
+using ShoutOut.WebApp.Authentication;
 using ShoutOut.WebApp.Cryptography;
 using ShoutOut.WebApp.Models;
 
 namespace ShoutOut.WebApp.Services;
 
-public class RegistrationService(ShoutOutDbContext dbContext, IHashingService hashingService, ITokenService tokenService)
+public class RegistrationService(
+    ShoutOutDbContext dbContext,
+    IHashingService hashingService,
+    CustomAuthenticationStateProvider customAuthenticationStateProvider)
 {
     public async Task CreateAccount(CreateAccount createAccount)
     {
@@ -20,5 +24,9 @@ public class RegistrationService(ShoutOutDbContext dbContext, IHashingService ha
             AvatarId = Guid.Empty
         });
         await dbContext.SaveChangesAsync();
+
+
+        await customAuthenticationStateProvider.UpdateStateAsync(new UserSession
+            { Email = createAccount.Email, Role = "admin" });
     }
 }

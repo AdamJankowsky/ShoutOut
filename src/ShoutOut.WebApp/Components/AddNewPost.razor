@@ -1,0 +1,35 @@
+@using Microsoft.AspNetCore.Components.Authorization
+@inject PostsService PostsService;
+@inject NavigationManager NavManager;
+
+<AuthorizeView>
+    <Authorized>
+        <MudGrid Justify="Justify.Center" Spacing="3">
+            <MudItem xl="12" xs="12" Class="mt-3">
+                <MudTextField T="string" @ref="postText" Lines="5" Variant="Variant.Outlined">
+
+                </MudTextField>
+            </MudItem>
+            <MudItem xl="12" xs="3" class="float-end">
+                <MudButton OnClick="@(async () => await AddPostsAsync())" Color="Color.Tertiary"
+                           Variant="Variant.Filled">Save post
+                </MudButton>
+            </MudItem>
+
+        </MudGrid>
+    </Authorized>
+</AuthorizeView>
+
+@code {
+
+    [Parameter] public Action PostAdded { get; set; }
+
+    private MudTextField<string> postText;
+
+    public async Task AddPostsAsync()
+    {
+        await PostsService.AddPostAsync(postText.Text);
+        NavManager.Refresh(true);
+    }
+
+}

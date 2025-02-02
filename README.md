@@ -3,8 +3,10 @@ ShoutOut is social blog platform similar to Wykop's Mikroblog
 
 I am creating it as hobby project because I wanted to know how much time would it consume to create such site.
 
+
 I want to use PostgreSql to store data, ASP.NET Core 8 as backend, Blazor with Server Side Rendering as frontend.
 
+I am using my own Registration/Login process which is simplified - I'd use external OAuth provider in real case scenario.
 For Authentication I want to implement User/Password authentication with storing Users in db with Passwords hashed with PBKDF2
 For asynchronous changes RabbitMq will be used with MassTransit.
 

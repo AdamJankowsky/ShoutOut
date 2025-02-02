@@ -1,0 +1,17 @@
+@inject LoginService LoginService;
+@inject NavigationManager NavigationManager;
+
+
+<div class="register-button">
+    <MudButton Color="Color.Tertiary" OnClick="@(async () => await LogoutAsync())" Class="">Logout</MudButton>
+</div>
+
+@code {
+
+    public async Task LogoutAsync()
+    {
+        await LoginService.LogoutAsync();
+        NavigationManager.NavigateTo("/");
+    }
+
+}

@@ -94,8 +94,9 @@
     {
         if (form.IsValid)
         {
-            RegistrationService.CreateAccount(createAccount);
-            NavigationManager.NavigateTo("/login");
+            await RegistrationService.CreateAccount(createAccount);
+            NavigationManager.NavigateTo("/");
         }
     }
-Ś}
+
+}

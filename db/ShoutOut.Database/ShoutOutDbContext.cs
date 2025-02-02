@@ -5,14 +5,16 @@ namespace ShoutOut.Database;
 
 public class ShoutOutDbContext : DbContext
 {
-    public DbSet<User> Users { get; set; }
-    
     public ShoutOutDbContext(DbContextOptions options) : base(options)
     {
     }
-    
+
+    public DbSet<User> Users { get; set; }
+    public DbSet<BlogPost> Posts { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ShoutOutDbContext).Assembly);
+        modelBuilder.UseIdentityByDefaultColumns();
     }
 }

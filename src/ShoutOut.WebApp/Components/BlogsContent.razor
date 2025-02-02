@@ -1,10 +1,23 @@
+@inject PostsService PostsService;
+
+
 <MudContainer MaxWidth="MaxWidth.Large">
 
-    <BlogPost/>
+    @foreach (var post in posts)
+    {
+        <BlogPost Content="@post.Content" Username="@post.Author" PostDate="@post.DateAdded"/>
+    }
 
 </MudContainer>
 
 
 @code {
+
+    Database.Entities.BlogPost[] posts = [];
+
+    protected override async Task OnParametersSetAsync()
+    {
+        posts = await PostsService.GetAsync();
+    }
 
 }

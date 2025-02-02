@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ShoutOut.Database;
@@ -11,9 +12,11 @@ using ShoutOut.Database;
 namespace ShoutOut.Database.Migrations
 {
     [DbContext(typeof(ShoutOutDbContext))]
-    partial class ShoutOutDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250202192117_AddPosts")]
+    partial class AddPosts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,8 +31,7 @@ namespace ShoutOut.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<long>("Id"));
-                    NpgsqlPropertyBuilderExtensions.HasIdentityOptions(b.Property<long>("Id"), 100L, null, null, null, null, null);
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Author")
                         .IsRequired()

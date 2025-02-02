@@ -1,19 +1,24 @@
-<MudGrid Class="mt-3 d-flex" Style="background-color: #eccccf" Justify="Justify.Center">
+<MudGrid Class="mt-3 d-flex mb-4" Style="background-color: #eccccf" Justify="Justify.Center">
     <MudItem xs="12" sm="6">
         #Avatar#
-        #Username
+        @Username
     </MudItem>
-    <MudItem xs="12" sm="6" Style="text-align: right">
-        <p>#PostDate#</p>
+    <MudItem xs="12" sm="5" Class="me-1" Style="text-align: right">
+        <p>@PostDate</p>
     </MudItem>
-    <MudItem>
-        <MudItem Class="mt-3">
-            #POSTCONTENT
-        </MudItem>
+    <MudItem xs="12" Class="mb-4">
+        <MudCard Outlined="true" Square="true">
+            <MudCardContent Style="background-color: #eccccf">
+                <MudText Typo="Typo.body2">@Content</MudText>
+            </MudCardContent>
+        </MudCard>
     </MudItem>
 </MudGrid>
 
 
 @code {
 
+    [Parameter] public string Content { get; set; }
+    [Parameter] public DateTime PostDate { get; set; }
+    [Parameter] public string Username { get; set; }
 }
