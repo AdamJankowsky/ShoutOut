@@ -1,20 +1,25 @@
-<MudGrid Class="mt-3 d-flex mb-4" Style="background-color: #eccccf" Justify="Justify.Center">
-    <MudItem xs="12" sm="6">
-        #Avatar#
-        @Username
+<MudGrid Class="mt-4 mb-4 p-3 rounded shadow-sm" Style="background-color: #f9f9f9; border: 1px solid #e0b3b8;"
+         Justify="Justify.Center">
+    <!-- User Info -->
+    <MudItem xs="12" sm="12" Class="d-flex justify-content-start align-items-start">
+        <MudImage Src="media/avatar_placeholder.png" Alt="users_avatar" Elevation="3" Height="50" Width="50"
+                  Class="rounded-circle me-2"></MudImage>
+        <div>
+            <MudText Typo="Typo.subtitle1" Class="fw-bold">@Username</MudText>
+            <MudText Typo="Typo.caption" Class="text-muted"
+                     Style="font-size: 0.9rem;">@PostDate.ToString("MMM dd, yyyy hh:mm tt")</MudText>
+        </div>
     </MudItem>
-    <MudItem xs="12" sm="5" Class="me-1" Style="text-align: right">
-        <p>@PostDate</p>
-    </MudItem>
-    <MudItem xs="12" Class="mb-4">
-        <MudCard Outlined="true" Square="true">
-            <MudCardContent Style="background-color: #eccccf">
-                <MudText Typo="Typo.body2">@Content</MudText>
+
+    <!-- Post Content -->
+    <MudItem xs="12" Class="mb-2 me-6">
+        <MudCard Outlined="true" Square="false" Class="rounded shadow-sm">
+            <MudCardContent Style="background-color: #edf2f7; padding: 1rem;">
+                <MudText Typo="Typo.body1" Class="text-dark">@Content</MudText>
             </MudCardContent>
         </MudCard>
     </MudItem>
 </MudGrid>
-
 
 @code {
 

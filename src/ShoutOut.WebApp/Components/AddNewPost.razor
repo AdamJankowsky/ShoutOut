@@ -5,12 +5,13 @@
 <AuthorizeView>
     <Authorized>
         <MudGrid Justify="Justify.Center" Spacing="3">
-            <MudItem xl="12" xs="12" Class="mt-3">
-                <MudTextField T="string" @ref="postText" Lines="5" Variant="Variant.Outlined">
+            <MudItem xl="7" xs="7" Class="mt-3">
+                <MudTextField T="string" Placeholder="Write something :)" @ref="postText" Lines="5"
+                              Variant="Variant.Outlined">
 
                 </MudTextField>
             </MudItem>
-            <MudItem xl="12" xs="3" class="float-end">
+            <MudItem xl="7" xs="7">
                 <MudButton OnClick="@(async () => await AddPostsAsync())" Color="Color.Tertiary"
                            Variant="Variant.Filled">Save post
                 </MudButton>
